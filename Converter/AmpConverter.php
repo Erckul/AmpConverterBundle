@@ -167,6 +167,16 @@ class AmpConverter
             $parent->removeChild($tag);
             return;
         }
+
+        if ($this->options['replace_incorrect_tags']) {
+            $newtag = $tag->ownerDocument->createElement('div');
+            foreach ($tag->attributes as $attrName => $attrNode) {
+                $newtag->setAttribute($attrName, $attrNode->value);
+            }
+            $parent->replaceChild($newtag,$tag);
+            return;
+        }
+
     }
 
     private function deleteTag($tag)

@@ -56,6 +56,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->booleanNode('remove_incorrect_tags')->defaultValue(true)->end()
+                ->booleanNode('replace_incorrect_tags')->defaultValue(true)->end()
             ->end()
         ;
 
