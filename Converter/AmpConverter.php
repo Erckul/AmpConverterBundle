@@ -56,7 +56,7 @@ class AmpConverter
         // Clean Tags
         if($document && $this->cleaner) {
             $document = $this->cleaner->cleanIllegalTagAttributes($document);
-            $document = $this->cleaner->cleanIllegalTags($document);
+            $document = $this->cleaner->cleanIllegalTags($document, $this->options);
         }
 
 
@@ -167,6 +167,7 @@ class AmpConverter
             $parent->removeChild($tag);
             return;
         }
+
     }
 
     private function deleteTag($tag)
