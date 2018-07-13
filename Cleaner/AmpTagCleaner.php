@@ -35,7 +35,7 @@ class AmpTagCleaner
         return trim($input, " \t\n\r\0\x0B");
     }
 
-    public function cleanillegalTags(DOMDocument $input) {
+    public function cleanillegalTags(DOMDocument $input, $options) {
         foreach ($this->illegalTags as $selector) {
             // if body exists, select all illegal elements inside of it
             $bodyExists = $this->getMatchingTags($input, 'body');
@@ -45,7 +45,12 @@ class AmpTagCleaner
 
             $tags = $this->getMatchingTags($input, $selector);
             foreach ($tags as $tag) {
-                $this->deleteTag($tag);
+                if($options['replace_incorrect_tag'] == true){
+                    $this->replaceTag($tag);
+                }else{
+                    $this->deleteTag($tag);
+                }
+
             }
         }
 
@@ -87,5 +92,16 @@ class AmpTagCleaner
         $parent->removeChild($tag);
     }
 
+    private function replaceTag($tag)
+    {
+        $parent = $tag->parentNode;
+        $newtag = $tag->ownerDocument->createElement('div');
+
+        foreach ($tag->attributes as $attrName => $attrNode) {
+            $newtag->setAttribute($attrName, $attrNode->value);
+        }
+
+        $parent->replaceChild($newtag,$tag);
+    }
 
 }
