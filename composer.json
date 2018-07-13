@@ -1,13 +1,13 @@
 {
-    "name": "elephantly/amp-converter-bundle",
+    "name": "erckul/amp-converter-bundle",
     "type": "symfony-bundle",
     "description": "Amp Converter for Symfony",
     "keywords": ["bundle", "amp", "converter", "convert", "html"],
     "license": "MIT",
     "authors": [
         {
-            "name": "PurpleBabar",
-            "email": "lalung.alexandre@gmail.com",
+            "name": "Erckul",
+            "email": "houllier.julien@gmail.com",
             "role": "Developer"
         }
     ],
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elephantly\\AmpConverterBundle\\": ""
+            "Erckul\\AmpConverterBundle\\": ""
         }
     },
     "minimum-stability": "dev",
